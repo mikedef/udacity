@@ -15,7 +15,7 @@ The pipeline that I designed uses the following techniques to detect lane lines:
   * Hough Transforms and Line Detection
   
 ### Lane lines were first detected using these techniques on the following test images
-![alt text][image1]
+![alt text][image1 =100x20]
 ![alt text][image2]
 ![alt text][image3]
 ![alt text][image4]
