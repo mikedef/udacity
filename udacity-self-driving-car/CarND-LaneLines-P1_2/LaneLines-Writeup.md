@@ -241,6 +241,13 @@ Since the Hough line detection algorithm detects many lines in the image I will 
 
 Here we see the final product of the laneline drawing pipeline
 
+### Applying The Pipeline to Video
+Next I apply the pipeline to the following videos.
+
+![mp4](test_videos_output/solidWhiteRight.mp4)
+
+
+
 ---
 
 ```python
