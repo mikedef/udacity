@@ -244,39 +244,11 @@ Here we see the final product of the laneline drawing pipeline
 ### Applying The Pipeline to Video
 Next I apply the pipeline to the following videos.
 
-![mp4](test_videos_output/solidWhiteRight.mp4)
+![White Lane Lines Video](https://youtu.be/JvwsEi3QeIs)
+![Yellow Lane Lines Video](https://youtu.be/XqMFRwWWovY)
 
+### Conclusion
+This was a really great project to get an introduction into OpenCV and Python by detecting lane lines. This was the first OpenCV project that I have ever worked on and it was really fun learning what this open source tool can do.
+ 
+The algorithm looks to be working perfect up until you apply the pipeline to the videos. It is clear from the videos that this is a basic algorithm that only detects straight lines on flat roads. I have a feeling that in the future there will be an advanced lane finding technique that needs to be applied to hilly roads or sharp corners. 
 
-
----
-
-```python
-```
-
-
-### Reflection
-
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-
-
-
-### 2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
