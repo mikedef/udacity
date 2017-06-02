@@ -57,15 +57,15 @@ def color_filter(image):
     return combined_image
 ```
 
-![png](finished/solidYellowCurve_whiteFilter.png)
+![png](finished/solidYellowCurve_colorFilter_whiteFilter.png)
 
 Anything in white is only visible in this image.
 
-![png](finished/solidYellowCurve_hsl.png)
+![png](finished/solidYellowCurve_colorFiliter_hsl.png)
 
 Here I have converted the original image to HSL color space
 
-![png](finished/solidYellowCurve_yellowFilter.png)
+![png](finished/solidYellowCurve_color_filter_yellowFilter.png)
 
 I know apply yellow thresholding and show that only yellow is visible in this image. 
 
