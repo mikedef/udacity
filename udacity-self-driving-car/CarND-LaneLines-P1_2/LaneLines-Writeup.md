@@ -20,7 +20,7 @@ Lane lines were first detected using these techniques on the provided test image
 ![jpg](test_images/solidYellowCurve.jpg)
 
 ### Color Filtering
-The images are uploaded with OpenCV in RGB (Red, Green, Blue) color space. From there I apply a color filter to select only white and yellow colors of the image. 
+The images are uploaded with OpenCV in RGB (Red, Green, Blue) color space. From there apply a filter to only select the white threshold of the image. Next I convert the original image to HSL color space to more easily detect yellow colors using a yellow threshold. I then apply a filter to the HSL image to select the yellow threshold of the image. Finally I combine the images into one image with only white and yellow color selection.
 
 ```python
 def color_filter(image):
@@ -56,6 +56,18 @@ def color_filter(image):
    
     return combined_image
 ```
+
+![png](finished/solidYellowCurve_whiteFilter.png)
+
+Anything in white is only visible in this image.
+
+![png](finished/solidYellowCurve_hsl.png)
+
+Here I have converted the original image to HSL color space
+
+![png](finished/solidYellowCurve_yellowFilter.png)
+
+I know apply yellow thresholding and show that only yellow is visible in this image. 
 
 ![png](finished/solidYellowCurve_colorFilter.png)
 
