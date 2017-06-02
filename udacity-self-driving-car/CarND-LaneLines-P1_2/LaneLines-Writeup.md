@@ -22,10 +22,6 @@ Lane lines were first detected using these techniques on the provided test image
 ### Color Filtering
 The images are uploaded with OpenCV in RGB (Red, Green, Blue) color space. From there I apply a color filter to select only white and yellow colors of the image. 
     def color_filter(image):
-    '''
-    Filter the image to only show white and yellow pixels
-        *See Changing Colorspaces turorial on OpenCV
-    ''' 
     ## Filter for the white pixles 
     # Define range of white color
     lower_white = np.array([200, 200, 200])
@@ -57,7 +53,7 @@ The images are uploaded with OpenCV in RGB (Red, Green, Blue) color space. From 
     combined_image = cv2.addWeighted(white_image,1.0, yellow_image,1.0, 0)
    
     return combined_image
-    '''
+    
 
 
 
