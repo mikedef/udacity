@@ -150,6 +150,97 @@ vertices = np.array([[(0, ysize), (450, 330), (510, 330), (xsize, ysize)]], dtyp
 
 It is clear from the picture above that the only region that is now shown are where the lane lines are located. 
 
+### Hough Transform and Line Detection
+I used the cv2.HoughLinesP() function in OpenCV to return an image with the hough lines drawn. I had to tune the associated parameters that are used with the function. The parameters and descriptions are shown below. 
+
+```python
+# Hough Transform
+rho = 2 # distance resolution of the accumulator in pixels
+theta = np.pi/180 # angle resolution of the accumulator in radians
+threshold = 20 # accumulator threshold parameter
+minLineLength = 20 # min line length
+maxLineGap = 13 # mx allowed gap between points on the same line to link them
+
+def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
+    """
+    `img` should be the output of a Canny transform.
+        
+    Returns an image with hough lines drawn.
+    """
+    lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
+    line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
+    draw_lines(line_img, lines)
+    return line_img
+
+```
+
+![png](finished/solidYellowCurve_houghLines1.png)
+
+This photo shows that there are multiple lines detected in the image. 
+
+### Average/Extrapolate Lane Lines
+Since the Hough line detection algorithm detects many lines in the image I will extrapolate lane lines based on what was detected. I first find the slope of each line and figure out if this is a left or right lane line detection. I use the equation of a line to find the endpoints of each line. I finally average all of the lines together and plot each line based on the averages.
+
+```python
+    # Filter out outlier slopes
+    culled_lines = []
+    for line in lines:
+        for x1, y1, x2, y2 in line:
+            if x2 - x1 == 0:
+                slope = 1000
+            else:
+                slope = (y2 - y1) / (x2 - x1)
+            
+            # Filter out slopes that cause the line to skew
+            if abs(slope) > 0.55:
+                culled_lines.append(line)
+                
+    lines = culled_lines
+    
+    # Find lane lines from x1, x2, y1, y2
+    l_x1 = []
+    l_x2 = []
+    r_x1 = []
+    r_x2 = []
+    y_min = int(img.shape[0])  # = y-pixel 540
+    y_max = int(img.shape[0]*0.6) # = y-pixel 324 apx to the edge of bound box
+    center = img.shape[1]/2      # center x-pixel
+    # y = m*x + b --> x = (y - b)/m
+    for line in lines:
+        for x1, y1, x2, y2 in line:
+            if (y2 - y1) / (x2 - x1) < 0 and x1 < center and x2 < center:    # If slope is < 0 and on the left half of the image then assign to left lane
+                m, b = np.polyfit([x1, x2], [y1, y2], 1) # 
+                # find endpoints for x1 and x2
+                l_x1.append(np.int((y_min - b)/np.float(m)))
+                l_x2.append(np.int(np.float((y_max - b))/np.float(m)))
+               # print ('l_x1', l_x1)
+               # print ('l_x2', l_x2)
+               # print ('l_m', m)
+               # print ('l_b', b)
+                
+            elif (y2 - y1) / (x2 - x1) > 0 and x1 > center and x2 > center:    # If slope is > 0 and on the right half of the image then assign to right lane
+                m, b = np.polyfit([x1, x2], [y1, y2], 1) # fit line 
+                r_x1.append(np.int(np.float((y_min - b))/np.float(m)))
+                r_x2.append(np.int(np.float((y_max - b))/np.float(m)))
+               # print ('r_x1', r_x1)
+               # print ('r_x2', r_x2)
+               # print ('r_m', m)
+               # print ('r_b', b)
+            
+            
+
+    l_x1_avg = int(np.mean(l_x1))
+    l_x2_avg = int(np.mean(l_x2))
+    r_x1_avg = int(np.mean(r_x1))
+    r_x2_avg = int(np.mean(r_x2))
+        
+    cv2.line(img, (l_x1_avg, y_min), (l_x2_avg, y_max), color, thickness)
+    cv2.line(img, (r_x1_avg, y_min), (r_x2_avg, y_max), color, thickness)
+```
+![png](finished/solidYellowCurve_finished.png)
+
+Here we see the final product of the laneline drawing pipeline
+
 ---
 
 ```python
