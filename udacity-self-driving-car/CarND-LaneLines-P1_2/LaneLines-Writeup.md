@@ -16,6 +16,12 @@ The pipeline that I designed uses the following techniques to detect lane lines:
   
 ### Lane lines were first detected using these techniques on the following test images
 ![alt text][image1]
+![alt text][image2]
+![alt text][image3]
+![alt text][image4]
+![alt text][image5]
+![alt text][image6]
+
 
 
 
