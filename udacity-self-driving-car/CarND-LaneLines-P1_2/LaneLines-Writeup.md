@@ -245,6 +245,7 @@ Here we see the final product of the laneline drawing pipeline
 Next I apply the pipeline to the following videos.
 
 ![White Lane Lines Video](https://youtu.be/JvwsEi3QeIs)
+
 ![Yellow Lane Lines Video](https://youtu.be/XqMFRwWWovY)
 
 ### Conclusion
