@@ -59,22 +59,59 @@ def color_filter(image):
 
 ![png](finished/solidYellowCurve_colorFilter_whiteFilter.png)
 
-Anything in white is only visible in this image.
+I apply a white thresholding and show that only white is visible in this image.
 
-![png](finished/solidYellowCurve_colorFiliter_hsl.png)
+![png](finished/solidYellowCurve_colorFilter_hsl.png)
 
 Here I have converted the original image to HSL color space
 
-![png](finished/solidYellowCurve_color_filter_yellowFilter.png)
+![png](finished/solidYellowCurve_colorFilter_yellowFilter.png)
 
-I know apply yellow thresholding and show that only yellow is visible in this image. 
+I next apply yellow thresholding and show that only yellow is visible in this image. 
 
 ![png](finished/solidYellowCurve_colorFilter.png)
 
 The white and yellow lines can be clearly identified in this photo. 
 
 
+### Canny Edge Detection
+Next I filtered the image using Canny edge detection techniques using OpenCV functions in the following order to the final image of the color filtering process. 
+   * Grayscale
+   * Gaussian Blur
+   * Canny Edge Detection
+   
+```python
+def grayscale(img):
+    """Applies the Grayscale transform
+    This will return an image with only one color channel
+    but NOTE: to see the returned image as grayscale
+    (assuming your grayscaled image is called 'gray')
+    you should call plt.imshow(gray, cmap='gray')"""
+    return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    
+def gaussian_blur(img, kernel_size):
+    """Applies a Gaussian Noise kernel"""
+    return cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
+  
+def canny(img, low_threshold, high_threshold):
+    """Applies the Canny transform"""
+    return cv2.Canny(img, low_threshold, high_threshold)
+  
+```
+![png](finished/solidYellowCurve_grayscale.png)
 
+First I converted the color filtered image to grayscale. 
+
+![png](finished/solidYellowCurve_blurGrayscale.png)
+
+Next I applied a Gaussian blur to the grayscale image with a kernel size of 5.
+
+![png](finished/solidYellowCurve_canny.png)
+
+I finished the process by applying a Canny edge detector to find the lines in the image. The goal is to find a setting of thresholds that detect enough edges in the image. I settled on a low threshold of 50 and a high threshold of 150 for the Canny edge detector function. The documentation in OpenCV references the selection of a threshold ratio between 3:1 or 2:1 (upper:lower).
+
+### Region of Interest
+I next
 ---
 
 ### Reflection
