@@ -14,22 +14,16 @@ The pipeline that I designed uses the following techniques to detect lane lines:
   * Region of Interest Selection
   * Hough Transforms and Line Detection
   
-### Lane lines were first detected using these techniques on the following test images
-|   1   |    2    |
+### Lane lines were first detected using these techniques on the provided test images. See image below for an example of the test images. 
 ![alt text][image1] 
-![alt text][image2]
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
-![alt text][image6]
+
 
 
 
 
 [//]: # (Image References)
 
-[image10]: ./examples/grayscale.jpg "Grayscale"
-[image1]: ./test_images/solidWhiteCurve.jpg =100x20 
+[image1]: ./test_images/solidWhiteCurve.jpg 
 [image2]: ./test_images/solidYellowCurve2.jpg  
 [image3]: ./test_images/solidYellowLeft.jpg
 [image4]: ./test_images/solidWhiteRight.jpg  
