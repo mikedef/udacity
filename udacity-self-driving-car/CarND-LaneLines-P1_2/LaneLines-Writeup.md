@@ -28,7 +28,7 @@ The pipeline that I designed uses the following techniques to detect lane lines:
 [//]: # (Image References)
 
 [image10]: ./examples/grayscale.jpg "Grayscale"
-[image1]: ./test_images/solidWhiteCurve.jpg  
+[image1]: ./test_images/solidWhiteCurve.jpg =100x20 
 [image2]: ./test_images/solidYellowCurve2.jpg  
 [image3]: ./test_images/solidYellowLeft.jpg
 [image4]: ./test_images/solidWhiteRight.jpg  
