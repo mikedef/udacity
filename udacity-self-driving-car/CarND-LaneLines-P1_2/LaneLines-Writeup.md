@@ -1,8 +1,8 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
+## Michael DeFilippo
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
+### This project was used to introduce the concepts of using OpenCV and the Python programming language to find lane lines on a road. The general idea is to first identify lane lines on a set of images using various computer vision techniques and then apply your lane finding pipeline to actual video of a car driving down a road.  
 
 ---
 
