@@ -56,7 +56,8 @@ def color_filter(image):
    
     return combined_image
 ```
-![alt text][image2] 
+
+![png](finished/solidYellowCurve_colorFilter.png)
 
 
 
