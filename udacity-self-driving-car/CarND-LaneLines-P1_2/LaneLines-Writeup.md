@@ -17,7 +17,7 @@ The pipeline that I designed uses the following techniques to detect lane lines:
 
 ### Uploading Test Images  
 Lane lines were first detected using these techniques on the provided test images. See image below for an example of the test images. 
-![alt text][image2] 
+![alt text][image1] 
 
 ### Color Filtering
 The images are uploaded with OpenCV in RGB (Red, Green, Blue) color space. From there I apply a color filter to select only white and yellow colors of the image. 
@@ -56,19 +56,15 @@ def color_filter(image):
    
     return combined_image
 ```
-
+![alt text][image2] 
 
 
 
 
 [//]: # (Image References)
 
-[image1]: ./test_images/solidWhiteCurve.jpg 
-[image2]: ./test_images/solidYellowCurve2.jpg  
-[image3]: ./test_images/solidYellowLeft.jpg
-[image4]: ./test_images/solidWhiteRight.jpg  
-[image5]: ./test_images/solidYellowCurve.jpg   
-[image6]: ./test_images/whiteCarLaneSwitch.jpg
+[image1]: ./test_images/solidYellowCurve.jpg   
+[image2]: ./finished/solidYellowCurve_colorFilter.jpg
 
 ---
 
