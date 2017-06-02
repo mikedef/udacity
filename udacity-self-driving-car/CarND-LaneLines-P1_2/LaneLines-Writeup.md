@@ -8,14 +8,26 @@
 
 **Finding Lane Lines on the Road**
 
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+The pipeline that I designed uses the following techniques to detect lane lines:
+  * Color Filtering
+  * Canny Edge Detection
+  * Region of Interest Selection
+  * Hough Transforms and Line Detection
+  
+### Lane lines were first detected using these techniques on the following test images
+![alt text][image1]
+
 
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image10]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteCurve.jpg  
+[image2]: ./test_images/solidYellowCurve2.jpg  
+[image3]: ./test_images/solidYellowLeft.jpg
+[image4]: ./test_images/solidWhiteRight.jpg  
+[image5]: ./test_images/solidYellowCurve.jpg   
+[image6]: ./test_images/whiteCarLaneSwitch.jpg
 
 ---
 
@@ -29,7 +41,7 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+
 
 
 ### 2. Identify potential shortcomings with your current pipeline
