@@ -13,7 +13,8 @@ The pipeline that I designed uses the following techniques to detect lane lines:
   * Canny Edge Detection
   * Region of Interest Selection
   * Hough Transforms and Line Detection
-  
+## Pipeline
+
 ### Uploading Test Images  
 Lane lines were first detected using these techniques on the provided test images. See image below for an example of the test images. 
 ![alt text][image1] 
