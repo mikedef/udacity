@@ -59,13 +59,9 @@ def color_filter(image):
 
 ![png](finished/solidYellowCurve_colorFilter.png)
 
+The white and yellow lines can be clearly identified in this photo. 
 
 
-
-[//]: # (Image References)
-
-[image1]: ./test_images/solidYellowCurve.jpg   
-[image2]: ./finished/solidYellowCurve_colorFilter.jpg
 
 ---
 
