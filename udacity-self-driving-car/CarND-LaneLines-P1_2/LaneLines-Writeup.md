@@ -111,8 +111,50 @@ Next I applied a Gaussian blur to the grayscale image with a kernel size of 5.
 I finished the process by applying a Canny edge detector to find the lines in the image. The goal is to find a setting of thresholds that detect enough edges in the image. I settled on a low threshold of 50 and a high threshold of 150 for the Canny edge detector function. The documentation in OpenCV references the selection of a threshold ratio between 3:1 or 2:1 (upper:lower).
 
 ### Region of Interest
-I next
+I next selected a region of interest in the image such that only the lane lines would be detected. This was useful because there are many other items of color in the image that we do not want to worry about.  Using the OpenCV cv2.fillPoly() function I was able to define a polygon defined by vertices.
+
+```python
+def region_of_interest(img, vertices):
+    """
+    Applies an image mask.
+    
+    Only keeps the region of the image defined by the polygon
+    formed from `vertices`. The rest of the image is set to black.
+    """
+    #defining a blank mask to start with
+    mask = np.zeros_like(img)   
+    
+    #defining a 3 channel or 1 channel color to fill the mask with depending on the input image
+    if len(img.shape) > 2:
+        channel_count = img.shape[2]  # i.e. 3 or 4 depending on your image
+        ignore_mask_color = (255,) * channel_count
+    else:
+        ignore_mask_color = 255
+        
+    #filling pixels inside the polygon defined by "vertices" with the fill color    
+    cv2.fillPoly(mask, vertices, ignore_mask_color)
+    
+    #returning the image only where mask pixels are nonzero
+    masked_image = cv2.bitwise_and(img, mask)
+    return masked_image
+    
+# Region of Interest Vertices
+imshape = image.shape  # find the max X and Y axis of the image where 0,0 is the top left
+ysize = imshape[0] # pixel 540
+xsize = imshape[1] # pixel 960
+#print (xsize,ysize)
+vertices = np.array([[(0, ysize), (450, 330), (510, 330), (xsize, ysize)]], dtype=np.int32)
+```
+
+![png](finished/solidYellowCurve_maskedRegion.png)
+
+It is clear from the picture above that the only region that is now shown are where the lane lines are located. 
+
 ---
+
+```python
+```
+
 
 ### Reflection
 
